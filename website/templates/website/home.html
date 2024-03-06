@@ -4,6 +4,47 @@
 
 {% if user.is_authenticated%}
    <h1>Welcome to our page</h1>
+   <h2>List of all record</h2>
+   <table class="table table-dark table-striped" border="3">
+    <thead>
+      <tr>
+        <th scope="col">Serial No</th>
+        <th scope="col">Created At</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Zipcode</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    {%for record in record%}
+    <tbody>
+      <tr>
+        <th scope="row">{{record.id}}</th>
+        <td>{{record.created_at}}</td>
+        <td>{{record.first_name}}</td>
+        <td>{{record.last_name}}</td>
+        <td>{{record.email}}</td>
+        <td>{{record.phone}}</td>
+        <td>{{record.address}}</td>
+        <td>{{record.city}}</td>
+        <td>{{record.state}}</td>
+        <td>{{record.zipcode}}</td>
+        <td><a href="{% url 'customer-detail' record.id %}">More actions</a></td>
+      </tr>
+      
+    </tbody>
+    {%endfor%}
+  </table>
+
+  <a href="{% url 'add-record'%}" class="btn btn-secondary btn-sm">Add Customer Record</a> <br><br>
+
+
+
 {% else %}
     <h2>Login</h2> <br>
     <form action="{% url 'home' %}" method="POST">
@@ -24,7 +65,10 @@
     
         <br>
         <button type="submit" class="btn btn-secondary">Login</button>
-    </form>
-    
+    </form> <br> <br>
+    <div class="registration-button">
+        <p>If you not registered then click below for registration</p>
+        <a href="{% url 'registration'%}" class="btn btn-primary"> Register</a>  
+    </div>
     {% endif %}
     {% endblock %}

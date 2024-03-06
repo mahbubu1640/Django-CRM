@@ -1,0 +1,16 @@
+{% extends 'website/base.html' %}
+{%block content%}
+<div class="alert alert-warning alert dismissible fade show " role="alert"></div>
+<h1>Update Record </h1>
+<form action="" method="POST">
+
+
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-secondary btn-sm">Update Record</button>
+</form>
+</div>
+    
+
+    {% endblock %}
+   

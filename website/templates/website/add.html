@@ -1,0 +1,17 @@
+{% extends 'website/base.html' %}
+  
+{% block content %}
+
+        <!-- {%if messages %}
+        {%for message in messages%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{message}}
+{%endfor%}
+{%endif%} -->
+<h1 class="h4">Please Fill Customer Record</h1>
+<form action="" method="POST" class="mt-4">
+    {%csrf_token%}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-sm btn-secondary mt-3">Add Record</button>
+</form> <br>
+{% endblock %}
